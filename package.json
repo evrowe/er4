@@ -26,7 +26,6 @@
     "babel-eslint": "6.0.0",
     "broccoli-asset-rev": "^2.2.0",
     "ember-ajax": "0.7.1",
-    "ember-bootstrap": "0.6.4",
     "ember-cli": "2.4.2",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "5.1.6",
@@ -47,6 +46,7 @@
     "loader.js": "^4.0.0"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.2",
     "express": "^4.13.4"
   }
 }

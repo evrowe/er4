@@ -1,0 +1,42 @@
+@import
+
+// Bootstrup
+'../../../node_modules/bootstrap/scss/variables',
+
+// Inject app settings
+'./base/settings',
+
+// Custom theme
+'./base/theme',
+
+// Bootstrap: reset and dependencies
+'../../../node_modules/bootstrap/scss/mixins',
+'../../../node_modules/bootstrap/scss/normalize',
+
+// Bootstrap: Core CSS
+'../../../node_modules/bootstrap/scss/reboot',
+'../../../node_modules/bootstrap/scss/type',
+'../../../node_modules/bootstrap/scss/images',
+'../../../node_modules/bootstrap/scss/code',
+'../../../node_modules/bootstrap/scss/grid',
+'../../../node_modules/bootstrap/scss/tables',
+'../../../node_modules/bootstrap/scss/forms',
+'../../../node_modules/bootstrap/scss/buttons',
+
+// Bootstrap: Components
+'../../../node_modules/bootstrap/scss/nav',
+'../../../node_modules/bootstrap/scss/navbar',
+
+// Bootstrap: Utilities
+'../../../node_modules/bootstrap/scss/utilities',
+'../../../node_modules/bootstrap/scss/utilities-background',
+'../../../node_modules/bootstrap/scss/utilities-spacing',
+'../../../node_modules/bootstrap/scss/utilities-responsive',
+
+// Base
+
+// Modules
+'./modules/application';
+
+// Components
+// './components/search-box';
