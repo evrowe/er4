@@ -81,7 +81,7 @@ module.exports = {
       cssLoader,
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
+        exclude: [/(node_modules)/,/(johnny)/,/(index\.js)/],
         loaders: ['react-hot', 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0'],
         include: path.join(__dirname, 'app')
       }

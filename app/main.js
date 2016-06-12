@@ -1,18 +1,39 @@
-import Ember from 'ember';
-import Resolver from './resolver';
-import loadInitializers from 'ember-load-initializers';
-import config from './config/environment';
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router';
 
-let App;
+// App Members
+import store, { history } from './store';
+import Routes from './routes';
 
-Ember.MODEL_FACTORY_INJECTIONS = true;
+// Root components
+import DevTools from './components/shared/devtools/DevTools';
 
-App = Ember.Application.extend({
-  modulePrefix: config.modulePrefix,
-  podModulePrefix: config.podModulePrefix,
-  Resolver
-});
+// Initialize routes with Store
 
-loadInitializers(App, config.modulePrefix);
+const routes = Routes(store);
 
-export default App;
+// Compose App root components and render
+
+function composeApp() {
+  if (process.env.NODE_ENV !== 'production') {
+    return(
+      <div>
+        <Router history={history} routes={routes} />
+        <DevTools/>
+      </div>
+    );
+  } else {
+    return (
+      <Router history={history} routes={routes} />
+    );
+  }
+}
+
+render(
+  <Provider store={store}>
+    {composeApp()}
+  </Provider>,
+  document.getElementById('app-root')
+);
