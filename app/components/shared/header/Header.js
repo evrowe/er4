@@ -7,8 +7,8 @@ class Header extends Component {
   // ---------------------------------------------------------------------------
   render() {
     return (
-      <nav className='navbar navbar-dark bg-primary navbar-static-top'>
-        <Link to='/' className='navbar-brand'>
+      <nav className='navbar'>
+        <Link to='/' className=''>
           <img src='img/er-mark-full.png' width='35'/>
         </Link>
         <ul className='nav navbar-nav'>

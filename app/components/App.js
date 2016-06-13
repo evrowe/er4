@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 
 // App Global Styles
-// import './global.css';
+import './global.css';
 
 // Compronents
 import Footer from './shared/footer/Footer';

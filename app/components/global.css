@@ -1,0 +1,14 @@
+/*****************************/
+/* App Global Styles
+/*****************************/
+@import 'variables';
+
+main {
+  margin-top: 2rem;
+}
+
+footer {
+  font-size: .75rem;
+  margin: 2rem auto 0;
+  padding: 2rem 0;
+}
