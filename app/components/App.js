@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <main>
         <Header />
-        {this.props.children}
+          {this.props.children}
         <Footer />
       </main>
     );

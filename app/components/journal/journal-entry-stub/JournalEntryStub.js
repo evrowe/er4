@@ -22,10 +22,10 @@ class JournalEntryStub extends Component {
 
     return(
       <article className='entry-stub' data-test='journal-entry-stub'>
-        <h2 data-test='title'>
+        <h3 data-test='title'>
           <Link to={`/journal/entry/${entry.id}`}>{entry.title}</Link>
-        </h2>
-        <div data-test='content'>{entry.content}</div>
+        </h3>
+        <div data-test='excerpt' dangerouslySetInnerHTML={{ __html: entry.excerpt }} />
       </article>
     );
   }

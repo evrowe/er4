@@ -21,7 +21,7 @@ export default function(store) {
       <Route path='/contact' component={Contact}/>
       <Route path='/journal' component={Journal}>
         <IndexRoute component={JournalList} />
-        <Route path='/entry/:entryId' component={JournalEntry}/>
+        <Route path='/journal/entry/:entryId' component={JournalEntry}/>
       </Route>
       <Route path='*' component={NotFound}/>
     </Route>

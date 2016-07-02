@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import { Link } from 'react-router';
+
+import styles from './header.css';
 
 class Header extends Component {
 
@@ -7,18 +10,18 @@ class Header extends Component {
   // ---------------------------------------------------------------------------
   render() {
     return (
-      <nav className='navbar'>
+      <nav styleName='navbar'>
         <Link to='/' className=''>
           <img src='img/er-mark-full.png' width='35'/>
         </Link>
-        <ul className='nav navbar-nav'>
-          <li className='nav-item'>
+        <ul styleName='navbar-nav'>
+          <li styleName='nav-item'>
             <Link to='/journal' className='nav-link'>Journal</Link>
           </li>
-          <li className='nav-item'>
+          <li styleName='nav-item'>
             <Link to='/about' className='nav-link'>About</Link>
           </li>
-          <li className='nav-item'>
+          <li styleName='nav-item'>
             <Link to='/contact' className='nav-link'>Contact</Link>
           </li>
         </ul>
@@ -27,4 +30,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default CSSModules(Header, styles);

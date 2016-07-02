@@ -3,9 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as journalActions from '../../actions/journal';
 
-// Components
-import JournalList from './journal-list/JournalList';
-
 // Setup for store
 function mapStateToProps(state) {
   return {
@@ -23,11 +20,20 @@ class Journal extends Component {
   // ---------------------------------------------------------------------------
 
   static propTypes = {
-    entries: PropTypes.array
+    entries: PropTypes.array,
+    getEntries: PropTypes.func
   }
 
   static defaultProps = {
     entries: []
+  }
+
+
+  // Hooks
+  // ---------------------------------------------------------------------------
+
+  componentDidMount() {
+    this.props.getEntries();
   }
 
   // Render
@@ -35,11 +41,8 @@ class Journal extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <div className='column'>
-          <h2>Yo it's journal time</h2>
-          <JournalList {...this.props} entries={this.props.entries} />
-        </div>
+      <div className='journal-top'>
+        {React.cloneElement(this.props.children, this.props)}
       </div>
     );
   }

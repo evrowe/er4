@@ -1,4 +1,23 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as journalActions from '../../../actions/journal';
+import CSSModules from 'react-css-modules';
+import moment from 'moment';
+
+// CSS
+import styles from './journal-entry.css';
+
+// Setup for store
+function mapStateToProps(state) {
+  return {
+    entry: state.entry
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(journalActions, dispatch);
+}
 
 class JournalEntry extends Component {
 
@@ -6,26 +25,43 @@ class JournalEntry extends Component {
   // ---------------------------------------------------------------------------
 
   static propTypes = {
-    entry: PropTypes.object
+    entry: PropTypes.object,
+    getEntry: PropTypes.func
   }
 
   static defaultProps = {
     entry: {}
   }
 
+  // Hooks
+  // ---------------------------------------------------------------------------
+
+  componentDidMount() {
+    this.props.getEntry(this.props.params.entryId);
+  }
+
   // Render
   // ---------------------------------------------------------------------------
 
   render() {
-    const { entry } = this.props;
+    let { entry } = this.props;
 
     return(
       <article className='entry-full' data-test='journal-entry'>
-        <h2 data-test='title'>{entry.title}</h2>
-        <div data-test='content'>{entry.content}</div>
+        <div styleName='entry-header'>
+          <img src={entry.headerImage} className='header-image' />
+          <h1 styleName='header-title'>{entry.title}</h1>
+        </div>
+        <div className='container' styleName='entry-content'>
+          <div className='row'>
+            <div className='column column-67 column-offset-16'>
+              <div data-test='content' dangerouslySetInnerHTML={{ __html: entry.content }} />
+            </div>
+          </div>
+        </div>
       </article>
     );
   }
 }
 
-export default JournalEntry;
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(JournalEntry, styles));

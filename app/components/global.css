@@ -3,12 +3,118 @@
 /*****************************/
 @import 'variables';
 
-main {
-  margin-top: 2rem;
+:global body {
+  margin: 0;
 }
 
-footer {
-  font-size: .75rem;
+/*:global main {
+  margin-top: 2rem;
+}*/
+
+:global footer {
+  font-size: .75em;
   margin: 2rem auto 0;
   padding: 2rem 0;
+}
+
+:global .main-content {
+  margin-bottom: 6rem;
+  margin-top: 3rem;
+}
+
+:global .column {
+
+  &.column-offset-15 {
+    margin-left: 15%;
+  }
+  &.column-offset-16 {
+    margin-left: 16.5%;
+  }
+}
+
+/*****************************/
+/* Typography Overrides
+/*****************************/
+
+a {
+  color: $brand-primary;
+}
+
+a:hover {
+  color: $brand-secondary;
+  text-decoration: underline;
+}
+
+/*****************************/
+/* Branding Classes
+/*****************************/
+
+:global .primary-text {
+  color: $brand-primary;
+}
+
+:global .secondary-text {
+  color: $brand-secondary;
+}
+
+:global .white-text {
+  color: $white;
+}
+
+:global .primary-bg {
+  background-color: $brand-primary;
+}
+
+:global .secondary-bg {
+  background-color: $brand-secondary;
+}
+
+:global .dark-bg {
+  background-color: $gray-darker;
+}
+
+/************************************************/
+/* Override Milligram Column Width on Mobile
+/************************************************/
+
+@media (max-width: 40.0rem) {
+  :global .row {
+    flex-direction: column;
+
+    .column {
+      max-width: 100%;
+
+      &.column-10,
+      &.column-20,
+      &.column-33,
+      &.column-34,
+      &.column-40,
+      &.column-50,
+      &.column-60,
+      &.column-66,
+      &.column-67,
+      &.column-75,
+      &.column-80,
+      &.column-90 {
+        max-width: 100%
+      }
+
+      &.column-offset-10,
+      &.column-offset-15,
+      &.column-offset-16,
+      &.column-offset-20,
+      &.column-offset-33,
+      &.column-offset-34,
+      &.column-offset-40,
+      &.column-offset-50,
+      &.column-offset-60,
+      &.column-offset-66,
+      &.column-offset-67,
+      &.column-offset-75,
+      &.column-offset-80,
+      &.column-offset-90 {
+        margin-left: 0;
+      }
+    }
+  }
 }

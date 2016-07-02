@@ -20,10 +20,10 @@ if (env === 'development') {
     test: /\.css$/,
     loader: 'style?sourceMap!css?modules&importLoaders=1&localIdentName=[path]__[name]__[local]__[hash:base64:5]!postcss'
   };
-  // include middleware for dev
   entry = [
-    'webpack-hot-middleware/client',
-    './app/main'
+    'webpack-dev-server/client?http://localhost:4200', // webpack-dev-server
+    'webpack/hot/only-dev-server', // webpack-dev-server
+    './app/main' // app entry point
   ];
 
 // prod

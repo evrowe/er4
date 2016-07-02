@@ -1,17 +1,18 @@
+import {
+  ENTRIES_FETCH_COMPLETED,
+  ENTRIES_FETCH_FAILED
+} from '../actions/journal';
+
 function entries(state = [], action) {
-  // switch(action.type) {
-  //   case 'INCREMENT_LIKES' :
-  //     console.log('Incrementing Likes!!');
-  //     const i = action.index;
-  //     return [
-  //       ...state.slice(0,i), // before the one we are updating
-  //       { ...state[i], likes: state[i].likes + 1 },
-  //       ...state.slice(i + 1) // after the one we are updating
-  //     ];
-  //   default:
-  //     return state;
-  // }
-  return state;
+  switch(action.type) {
+    case ENTRIES_FETCH_COMPLETED:
+      return action.entries;
+    case ENTRIES_FETCH_FAILED:
+      console.log('fetching journal entries failed');
+      return state;
+    default:
+      return state;
+  }
 }
 
 export default entries;

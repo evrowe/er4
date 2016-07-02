@@ -20,11 +20,18 @@ class JournalList extends Component {
 
   render() {
     return(
-      <div className='journal-list'>
-        {this.props.entries.length ?
-          this.props.entries.map((entry, index) => <JournalEntryStub {...this.props} key={index} i={index} entry={entry} />) :
-          <h3>No Entries Found.</h3>
-        }
+      <div className='container main-content'>
+        <div className='row'>
+          <div className='column column-67 column-offset-16'>
+            <h2>Welcome to the Journal</h2>
+            <div className='journal-list'>
+              {this.props.entries.length ?
+                this.props.entries.map((entry, index) => <JournalEntryStub {...this.props} key={index} i={index} entry={entry} />) :
+                <p>No Entries Found.</p>
+              }
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

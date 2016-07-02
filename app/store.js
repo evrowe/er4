@@ -7,13 +7,6 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/main';
 import DevTools from './components/shared/devtools/DevTools';
 
-import entries from './data/entries';
-
-// create an object for the default data
-const defaultState = {
-  entries
-};
-
 // const store = createStore(rootReducer, defaultState);
 
 let store;

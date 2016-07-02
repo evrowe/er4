@@ -1,9 +1,9 @@
 $gray-base:              #000;
-$gray-darker:            #272b30; // #222
-$gray-dark:              #3a3f44;   // #333
-$gray:                   #52575c; // #555
-$gray-light:             #7a8288;   // #999
-$gray-lighter:           #999; // #eee
+$gray-darker:            #272b30;
+$gray-dark:              #3a3f44;
+$gray:                   #52575c;
+$gray-light:             #7a8288;
+$gray-lighter:           #999;
 
 $brand-primary:         #faa73f;
 $brand-secondary:       #fecd67;
