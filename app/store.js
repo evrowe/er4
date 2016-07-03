@@ -20,6 +20,12 @@ if (process.env.NODE_ENV !== 'production') {
       DevTools.instrument() // Who knows, creates a function that that the store needs to display redux action events
     )
   );
+  // if (module.hot) {
+  //   module.hot.accept('./reducers/', () => {
+  //     const nextRootReducer = require('./reducers/main').default;
+  //     store.replaceReducer(nextRootReducer);
+  //   });
+  // }
 } else {
   // Production store creation does not require DevTools or hot module updates
   store = createStore(
@@ -29,12 +35,6 @@ if (process.env.NODE_ENV !== 'production') {
       // defaultState
     )
   );
-  if (module.hot) {
-    module.hot.accept('./reducers/',() => {
-      const nextRootReducer = require('./reducers/main').default;
-      store.replaceReducer(nextRootReducer);
-    });
-  }
 }
 
 export const history = syncHistoryWithStore(browserHistory, store);

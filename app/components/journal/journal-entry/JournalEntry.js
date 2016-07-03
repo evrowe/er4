@@ -52,10 +52,15 @@ class JournalEntry extends Component {
           <img src={entry.headerImage} className='header-image' />
           <h1 styleName='header-title'>{entry.title}</h1>
         </div>
-        <div className='container' styleName='entry-content'>
+        <div className='container'>
           <div className='row'>
             <div className='column column-67 column-offset-16'>
-              <div data-test='content' dangerouslySetInnerHTML={{ __html: entry.content }} />
+              <div styleName='entry-date'>
+                {moment(entry.created).format('MMMM D, YYYY')}
+                { entry.updated ?
+                  <span styleName='updated-date'>(Updated {moment(entry.updated).format('MMMM D, YYYY')})</span> : '' }
+              </div>
+              <div styleName='entry-content' data-test='content' dangerouslySetInnerHTML={{ __html: entry.content }} />
             </div>
           </div>
         </div>

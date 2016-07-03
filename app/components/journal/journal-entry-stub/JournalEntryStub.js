@@ -25,16 +25,16 @@ class JournalEntryStub extends Component {
     const { entry } = this.props;
 
     return(
-      <article styleName='entry-stub' data-test='journal-entry-stub'>
+      <article styleName='entry-stub' className='entry-stub' data-test='journal-entry-stub'>
         <h3 styleName='entry-title' data-test='title'>
           <Link to={`/journal/entry/${entry.id}`}>{entry.title}</Link>
         </h3>
         <p styleName='entry-date-line'>
-          Posted {moment(entry.created).format('MM/DD/YY')}
+          {moment(entry.created).format('MMMM D, YYYY')}
           { entry.updated ?
-            <span styleName='updated-date'>[Updated {moment(entry.updated).format('MM/DD/YY')}]</span> : '' }
+            <span styleName='updated-date'>(Updated {moment(entry.updated).format('MMMM D, YYYY')})</span> : '' }
         </p>
-        <div data-test='excerpt' dangerouslySetInnerHTML={{ __html: entry.excerpt }} />
+        <div styleName='entry-excerpt' data-test='excerpt' dangerouslySetInnerHTML={{ __html: entry.excerpt }} />
       </article>
     );
   }

@@ -6,15 +6,13 @@ class Footer extends Component {
   // ---------------------------------------------------------------------------
   render() {
     return(
-      <footer className='white-text dark-bg'>
+      <footer>
         <div className='container'>
           <div className='row'>
-            <div className='column'>
-              <img src='img/er-large.png' style={{ width: '100%' }} />
+            <div className='column column-25'>
+              <img src='/img/er-large.png' style={{ width: '100%' }} />
             </div>
-            <div className='column'></div>
-            <div className='column'></div>
-            <div className='column'>
+            <div className='column column-25 column-offset-50'>
               <p>
                 Built with <a href='//facebook.github.io' target='_blank'>React</a><br/>
                 Source available on <a href='//www.github.com/evrowe/er4' target='_blank'>Github</a>

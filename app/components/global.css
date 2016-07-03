@@ -4,14 +4,18 @@
 @import 'variables';
 
 :global body {
+  background: #f9f9f9;
   margin: 0;
+
+  &.dark-mode {
+    background: $gray-darker;
+    color: $white;
+  }
 }
 
-/*:global main {
-  margin-top: 2rem;
-}*/
-
 :global footer {
+  background: $gray-darker;
+  color: $white;
   font-size: .75em;
   margin: 2rem auto 0;
   padding: 2rem 0;
@@ -43,6 +47,57 @@ a {
 a:hover {
   color: $brand-secondary;
   text-decoration: underline;
+}
+
+blockquote {
+  background: #efefef;
+  border-radius: 3px;
+  font-family: serif;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+pre {
+  background: $gray-light;
+  border-color: $brand-primary;
+  border-radius: 3px;
+  color: $white;
+  overflow-x: scroll;
+}
+
+code {
+  background: #e0e0e0;
+  font-size: 100%;
+}
+
+:global .dark-mode {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: #999;
+  }
+
+  p,
+  li,
+  sub,
+  sup {
+    color: #dedede;
+  }
+
+  blockquote {
+    background: $gray;
+  }
+
+  code {
+    background: $gray;
+  }
+
+  footer {
+    background: $gray-base;
+  }
 }
 
 /*****************************/

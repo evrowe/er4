@@ -1,6 +1,6 @@
 {
   "name": "er4",
-  "version": "0.0.2",
+  "version": "0.4.0",
   "description": "The annual-ish rebuild of my personal site for 2016, now with a back-end",
   "main": "index.js",
   "private": true,

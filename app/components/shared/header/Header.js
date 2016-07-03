@@ -12,7 +12,7 @@ class Header extends Component {
     return (
       <nav styleName='navbar'>
         <Link to='/' className=''>
-          <img src='img/er-mark-full.png' width='35'/>
+          <img src='/img/er-mark-full.png' width='35'/>
         </Link>
         <ul styleName='navbar-nav'>
           <li styleName='nav-item'>

@@ -40,8 +40,8 @@ mountAppRoutes(app);
 // -----------------------------------------------------------------------------
 
 http.createServer(app).listen(app.get('port'), app.get('host'), function(){
+  console.log(`Listening on port ${app.get('port')}`);
   if (app.get('env') === 'development') {
-    console.log(`Listening on port ${app.get('port')}`);
     console.log('"If everybody could just love each other the world would be a better place"\n -Johnny, "The Room"');
   }
 });
