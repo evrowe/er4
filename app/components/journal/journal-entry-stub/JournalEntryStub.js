@@ -1,5 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import CSSModules from 'react-css-modules';
+import moment from 'moment';
+
+import styles from './journal-entry-stub.css';
 
 class JournalEntryStub extends Component {
 
@@ -21,14 +25,19 @@ class JournalEntryStub extends Component {
     const { entry } = this.props;
 
     return(
-      <article className='entry-stub' data-test='journal-entry-stub'>
-        <h3 data-test='title'>
+      <article styleName='entry-stub' data-test='journal-entry-stub'>
+        <h3 styleName='entry-title' data-test='title'>
           <Link to={`/journal/entry/${entry.id}`}>{entry.title}</Link>
         </h3>
+        <p styleName='entry-date-line'>
+          Posted {moment(entry.created).format('MM/DD/YY')}
+          { entry.updated ?
+            <span styleName='updated-date'>[Updated {moment(entry.updated).format('MM/DD/YY')}]</span> : '' }
+        </p>
         <div data-test='excerpt' dangerouslySetInnerHTML={{ __html: entry.excerpt }} />
       </article>
     );
   }
 }
 
-export default JournalEntryStub;
+export default CSSModules(JournalEntryStub, styles);

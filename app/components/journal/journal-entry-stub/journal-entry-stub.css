@@ -1,0 +1,29 @@
+/*****************************/
+/* Journal Entry Stub Styles
+/*****************************/
+@import '../../variables';
+
+.entry-stub {
+  border-bottom: 1px solid $gray-lighter;
+  margin: 1rem 0;
+  padding: 3rem 0 2rem;
+
+  &:last-child {
+    border: none;
+  }
+
+  .entry-title {
+    margin-bottom: .5rem;
+  }
+
+  .entry-date-line {
+    color: $gray;
+    font-size: .9em;
+
+    .updated-date {
+      color: $gray-lighter;
+      font-style: italic;
+      margin-left: 1rem;
+    }
+  }
+}
