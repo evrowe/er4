@@ -1,52 +1,59 @@
 # er4
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Yet another personal site rebuild project, this time to learn the ins and outs of:
+
+* [React.js](http://facebook.github.io/react)
+* [React Redux](https://github.com/reactjs/react-redux)
+* [Babel.js](https://babeljs.io)
+* [Webpack](https://webpack.github.io)
+* [CSS Modules](https://github.com/css-modules/css-modules)
+* [PostCSS](http://postcss.org)
+* [Express](http://expressjs.com)
+* [Knex.js](http://knexjs.org)
 
 ## Prerequisites
 
-You will need the following things properly installed on your computer.
+You will need the following software properly installed on your computer:
 
 * [Git](http://git-scm.com/)
 * [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone git@github.com:evrowe/er4.git` this repository
 * change into the new directory
 * `npm install`
-* `bower install`
 
 ## Running / Development
 
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+The development server assumes that `NODE_ENV=development` means that the server(s)
+will run in development mode. You can set this in your terminal, in your `.profile`
+or `.zshrc` or `.bashrc` whatever dang file you use to set up your terminal session.
 
-### Code Generators
+The node server will run at `localhost:3000`; the webpack hot reload server runs at
+`localhost:4200`, and will automatically proxy API requests to the node server.
 
-Make use of the many generators for code, try `ember help generate` for more details
+To start up:
+* `npm run server:dev` starts the node server in development mode, using `nodemon`
+to auto restart when files change. Very useful.
+* `npm run server:webpack` starts the webpack server. Modules will hot reload when
+they update.
+* Visit the app at [http://localhost:4200](http://localhost:4200).
 
-### Running Tests
+## Production
 
-* `ember test`
-* `ember test --server`
+Run the app in production mode for better Express performance when you want to
+deploy to a real server. Only I should ever need this but meh.
 
-### Building
+* `npm run build` builds a production-ready artifact of the UI application
+* `npm run start` boots the server in production mode.
 
-* `ember build` (development)
-* `ember build --environment production` (production)
+## Deploying
 
-### Deploying
-
-Specify what it takes to deploy your app.
+We'll figure that out soon enough.
 
 ## Further Reading / Useful Links
 
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://www.ember-cli.com/)
 * Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+  * [React Dev Tools](https://github.com/facebook/react-devtools)
+  * [Redux Dev Tools](https://github.com/gaearon/redux-devtools)
