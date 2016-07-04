@@ -1,0 +1,16 @@
+$gray-base:              #000;
+$gray-darker:            #272b30;
+$gray-dark:              #3a3f44;
+$gray:                   #52575c;
+$gray-light:             #7a8288;
+$gray-lighter:           #999;
+
+$brand-primary:         #faa73f;
+$brand-secondary:       #fecd67;
+$brand-success:         #62c462;
+$brand-info:            #5bc0de;
+$brand-warning:         #f89406;
+$brand-danger:          #ee5f5b;
+
+$white:                 #fff;
+$transparent-black:     rgba(0, 0, 0, .6);

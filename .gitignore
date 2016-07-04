@@ -1,18 +1,24 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+#####################
+# Vendor Libraries
+#####################
+node_modules/
 
-# compiled output
-/dist
-/tmp
+#####################
+# Compiled Assets
+#####################
+dist/build/
 
-# dependencies
-/node_modules
-/bower_components
+#####################
+# Debug
+#####################
+npm-debug.log
+*.db
+/libpeerconnection.log
 
-# misc
+#####################
+# Misc
+#####################
 /.sass-cache
 /connect.lock
 /coverage/*
-/libpeerconnection.log
-npm-debug.log
-testem.log
 .tags*

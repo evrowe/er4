@@ -1,0 +1,39 @@
+/*****************************/
+/* Journal Entry Stub Styles
+/*****************************/
+@import '../../variables';
+
+.entry-stub {
+  background: $white;
+  box-shadow: 0px 0px 3px #d0d0d0;
+  margin: 3rem 0;
+  padding: 2rem;
+
+  .entry-title {
+    margin-bottom: .5rem;
+  }
+
+  .entry-date-line {
+    color: $gray;
+    font-size: .8em;
+
+    .updated-date {
+      color: $gray-lighter;
+      font-style: italic;
+      margin-left: 1rem;
+    }
+  }
+
+  .entry-excerpt {
+    font-size: 1.1em;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+:global .dark-mode .entry-stub {
+  background: $gray-dark;
+  box-shadow: 0px 0px 3px #000;
+}
