@@ -45,8 +45,8 @@ they update.
 Run the app in production mode for better Express performance when you want to
 deploy to a real server. Only I should ever need this but meh.
 
-* `npm run build` builds a production-ready artifact of the UI application
-* `npm run start` boots the server in production mode.
+* `npm run build` builds a production-ready artifact of the UI application.
+* `npm run start` boots the server in production mode, serves the UI and back-end
 
 ## Deploying
 
