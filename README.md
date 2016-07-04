@@ -48,12 +48,28 @@ deploy to a real server. Only I should ever need this but meh.
 * `npm run build` builds a production-ready artifact of the UI application.
 * `npm run start` boots the server in production mode, serves the UI and back-end
 
-## Deploying
-
-We'll figure that out soon enough.
-
 ## Further Reading / Useful Links
 
 * Development Browser Extensions
   * [React Dev Tools](https://github.com/facebook/react-devtools)
   * [Redux Dev Tools](https://github.com/gaearon/redux-devtools)
+
+## To-Dos
+
+
+**UI**
+- [x] Set up React app
+- [x] Update site design
+- [x] Implement data layer with Redux
+- [ ] Create secure dashboard (github login)
+- [ ] Create blog post listing on dashboard
+- [ ] Create blog post authoring/editing page
+- [ ] Set up S3 bucket uploads for images
+
+**Back End**
+- [x] Create barebones API for serving legacy blog post static JSON files
+- [ ] Get a postgres database running
+- [ ] Write interface to postgres with Knex.js
+- [ ] CRUD API for blog posts
+- [ ] Migrate legacy blog posts to back-end
+- [ ] Dockerize server setup for ease of deployment
