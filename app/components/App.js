@@ -20,9 +20,11 @@ class App extends Component {
   // ---------------------------------------------------------------------------
   render() {
     return (
-      <main>
+      <main className='o-hi-mark'>
         <Header />
-          {this.props.children}
+          <div className='youre-my-best-friend'>
+            {this.props.children}
+          </div>
         <Footer />
       </main>
     );
