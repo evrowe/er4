@@ -36,6 +36,18 @@
   }
 }
 
+/* Perfect sticky footer */
+
+:global .o-hi-mark {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+:global .youre-my-best-friend {
+  flex: 1;
+}
+
 /*****************************/
 /* Typography Overrides
 /*****************************/
