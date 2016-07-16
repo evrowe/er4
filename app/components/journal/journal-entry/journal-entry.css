@@ -15,13 +15,23 @@
     align-items: center;
     color: $white;
     display: flex;
+    font-size: 2.5em;
+    font-weight: 500;
     height: 100%;
     justify-content: center;
+    left: 10%;
     position: absolute;
     text-align: center;
     text-shadow: 1px 1px 3px $gray-darker;
     top: 0;
-    width: 100%;
+    width: 80%;
+  }
+
+  @media (min-width: 40.0rem) {
+    .header-title {
+      font-size: 5em;
+      font-weight: 400;
+    }
   }
 }
 

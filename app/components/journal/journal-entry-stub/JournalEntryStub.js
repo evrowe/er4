@@ -26,6 +26,8 @@ class JournalEntryStub extends Component {
 
     return(
       <article styleName='entry-stub' className='entry-stub' data-test='journal-entry-stub'>
+        { entry.headerImage ?
+          <img src={entry.headerImage} alt='' styleName='entry-image'/> : '' }
         <h3 styleName='entry-title' data-test='title'>
           <Link to={`/journal/entry/${entry.id}`}>{entry.title}</Link>
         </h3>

@@ -9,8 +9,27 @@
   margin: 3rem 0;
   padding: 2rem;
 
+  .entry-image {
+    display: block;
+    height: auto;
+    margin: 0 0 1em;
+    width: 100%;
+  }
+
   .entry-title {
-    margin-bottom: .5rem;
+    font-weight: 500;
+    margin-bottom: 0;
+
+    a {
+      color: $gray-base;
+      transition: color .3s ease;
+    }
+
+    a:hover {
+      color: $brand-primary;
+      text-decoration: none;
+      transition: color .3s ease;
+    }
   }
 
   .entry-date-line {

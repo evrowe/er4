@@ -37,7 +37,22 @@ class JournalEntry extends Component {
   // ---------------------------------------------------------------------------
 
   componentDidMount() {
+
+    // Fetch this entry's data from the server
     this.props.getEntry(this.props.params.entryId);
+
+    // Reset the window's scroll position
+    if (window.scrollTo) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  componentWillMount() {
+    // Clear out the old entry before mounting so that you don't see it flash
+    // before the new one loads, that's jangus.
+    // @TODO: Add some neato loading state animations to display when nothing is
+    // populated yet.
+    this.props.entry = {};
   }
 
   // Render
