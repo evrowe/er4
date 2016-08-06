@@ -17,9 +17,7 @@ class Footer extends Component {
                 Built with <a href='//facebook.github.io' target='_blank'>React</a><br/>
                 Source available on <a href='//www.github.com/evrowe/er4' target='_blank'>Github</a>
               </p>
-              <p>
-                Hosted on <a href='//www.digitalocean.com' target='_blank'>Digital Ocean</a> with continuous integration via <a href='//www.codeship.com' target='_blank'>Codeship</a>
-              </p>
+              <p>Hosted on <a href='//www.digitalocean.com' target='_blank'>Digital Ocean</a></p>
               <p>&copy;2016 Evan Rowe</p>
             </div>
           </div>
