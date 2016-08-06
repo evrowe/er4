@@ -71,4 +71,9 @@ deploy to a real server. Only I should ever need this but meh.
 - [ ] Write interface to postgres with Knex.js
 - [ ] CRUD API for blog posts
 - [ ] Migrate legacy blog posts to back-end
-- [ ] Dockerize server setup for ease of deployment
+
+**Server**
+- [x] Set up/configure Droplet
+- [x] Serve node app via nginx
+- [x] HTTPS via letsencrypt
+- [ ] Dockerize server setup for ease of deployment (future times)
