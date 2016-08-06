@@ -54,8 +54,7 @@ deploy to a real server. Only I should ever need this but meh.
   * [React Dev Tools](https://github.com/facebook/react-devtools)
   * [Redux Dev Tools](https://github.com/gaearon/redux-devtools)
 
-## To-Dos
-
+## Totally Rad To-Dos
 
 **UI**
 - [x] Set up React app
