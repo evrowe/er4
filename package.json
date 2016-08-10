@@ -43,6 +43,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "autotrack": "^1.0.0",
     "babel-polyfill": "^6.9.1",
     "bluebird": "^3.4.1",
     "compression": "^1.6.2",

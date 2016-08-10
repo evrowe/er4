@@ -11,6 +11,9 @@ import JournalList from './components/journal/journal-list/JournalList';
 import Landing from './components/landing/Landing';
 import NotFound from './components/not-found/NotFound';
 
+// Utilitees
+import './utils/google-analytics';
+
 export default function(store) {
   // Return Route Component Definition
 
