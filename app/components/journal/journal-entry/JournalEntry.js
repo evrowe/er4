@@ -39,6 +39,8 @@ class JournalEntry extends Component {
   componentDidMount() {
 
     // Fetch this entry's data from the server
+    // @TODO: Add some neato loading state animations to display when nothing is
+    // populated yet.
     this.props.getEntry(this.props.params.entryId);
 
     // Reset the window's scroll position
@@ -47,12 +49,19 @@ class JournalEntry extends Component {
     }
   }
 
-  componentWillMount() {
-    // Clear out the old entry before mounting so that you don't see it flash
+  componentWillUnmount() {
+    // Clear out the old entry after unmounting so that you don't see it flash
     // before the new one loads, that's jangus.
-    // @TODO: Add some neato loading state animations to display when nothing is
-    // populated yet.
-    this.props.entry = {};
+
+    // @TODO: Come up with a different/better way of doing this; I am thinking
+    // that I need to manage state differently, such that instead of a single
+    // reference to a "current entry", there is a reference to a collection of
+    // entries and the appropriate one to display is determined via its entryId.
+    // This would prevent the need to be constantly overwriting the "currentEntry"
+    // state and instead just pull from a collection of data, which seems the
+    // more appropriate way to handle it.
+
+    this.setState({ entry: {}});
   }
 
   // Render
