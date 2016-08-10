@@ -5,6 +5,15 @@ import moment from 'moment';
 
 import styles from './journal-entry-stub.css';
 
+/**
+ * A display component that represents a journal entry within a list of entries.
+ * Shows the entry title, header image, post date and an entry "excerpt". Links
+ * to the full journal entry view.
+ *
+ * @class Component.Journal.JournalEntryStub
+ * @constructor
+ * @extends React.Component
+ */
 class JournalEntryStub extends Component {
 
   // Property Validations + Defaults

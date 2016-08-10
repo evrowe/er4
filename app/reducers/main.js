@@ -3,13 +3,11 @@ import { routerReducer as routing } from 'react-router-redux';
 
 // Reducers
 import entry from './entry';
-import entries from './entries';
-import entriesAreLoading from './entriesAreLoading';
+import entryListModel from './entryListModel';
 
 const rootReducer = combineReducers({
   entry,
-  entries,
-  entriesAreLoading,
+  entryListModel,
   routing
 });
 

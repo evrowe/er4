@@ -6,8 +6,7 @@ import * as journalActions from '../../actions/journal';
 // Setup for store
 function mapStateToProps(state) {
   return {
-    entries: state.entries,
-    entriesAreLoading: state.entriesAreLoading
+    entryListModel: state.entryListModel
   };
 }
 
@@ -15,22 +14,31 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(journalActions, dispatch);
 }
 
+/**
+ * The master component for the `/journal` route. This guy takes care of fetching
+ * the `entryListModel` from the server and passes that state into its children,
+ * which only the `JournalList` component really cares about.
+ *
+ * @class Component.Journal
+ * @constructor
+ * @extends React.Component
+ */
 class Journal extends Component {
 
   // Property Validations + Defaults
   // ---------------------------------------------------------------------------
 
   static propTypes = {
-    entries: PropTypes.array,
-    getEntries: PropTypes.func,
-    entriesAreLoading: PropTypes.bool
+    entryListModel: PropTypes.object,
+    getEntries: PropTypes.func
   }
 
   static defaultProps = {
-    entries: [],
-    entriesAreLoading: false
+    entryListModel: {
+      entries: [],
+      isLoading: false
+    }
   }
-
 
   // Hooks
   // ---------------------------------------------------------------------------

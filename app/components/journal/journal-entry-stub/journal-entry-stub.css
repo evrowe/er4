@@ -77,7 +77,7 @@ $loading-gradient: linear-gradient(270deg, $glight, $glight, $gdark, $glight, $g
 
 /* Placeholder element definitions */
 .entry-image-placeholder {
-  background-color: $gray-ultralight;
+  background-color: $gray-megalight;
   height: 20em;
   margin: 0 0 1.25em;
   width: 100%;
