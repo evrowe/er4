@@ -3,7 +3,7 @@ import {
   ENTRIES_FETCH_FAILED
 } from '../actions/journal';
 
-function entries(state = [], action) {
+export default function entries(state = [], action) {
   switch(action.type) {
     case ENTRIES_FETCH_COMPLETED:
       return action.entries;
@@ -14,5 +14,3 @@ function entries(state = [], action) {
       return state;
   }
 }
-
-export default entries;

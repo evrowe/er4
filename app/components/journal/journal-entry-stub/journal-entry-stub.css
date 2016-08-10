@@ -8,48 +8,100 @@
   box-shadow: 0px 0px 3px #d0d0d0;
   margin: 3rem 0;
   padding: 2rem;
+}
 
-  .entry-image {
-    display: block;
-    height: auto;
-    margin: 0 0 1em;
-    width: 100%;
+.entry-image {
+  background-color: $gray-superlight;
+  display: block;
+  height: auto;
+  margin: 0 0 1em;
+  min-height: 5em;
+  width: 100%;
+}
+
+.entry-title {
+  font-weight: 500;
+  margin-bottom: 0;
+
+  a {
+    color: $gray-base;
+    transition: color .3s ease;
   }
 
-  .entry-title {
-    font-weight: 500;
+  a:hover {
+    color: $brand-primary;
+    text-decoration: none;
+    transition: color .3s ease;
+  }
+}
+
+.entry-date-line {
+  color: $gray;
+  font-size: .8em;
+
+  .updated-date {
+    color: $gray-lighter;
+    font-style: italic;
+    margin-left: 1rem;
+  }
+}
+
+.entry-excerpt {
+  font-size: 1.1em;
+
+  p {
     margin-bottom: 0;
-
-    a {
-      color: $gray-base;
-      transition: color .3s ease;
-    }
-
-    a:hover {
-      color: $brand-primary;
-      text-decoration: none;
-      transition: color .3s ease;
-    }
   }
+}
 
-  .entry-date-line {
-    color: $gray;
-    font-size: .8em;
+/*
+  Journal Stub Loading Placeholder Styles
+ */
 
-    .updated-date {
-      color: $gray-lighter;
-      font-style: italic;
-      margin-left: 1rem;
-    }
-  }
+/* Loading gradient definition */
+@keyframes loadingAnimation {
+  0% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
 
-  .entry-excerpt {
-    font-size: 1.1em;
+$gdark: $gray-superlight;
+$glight: $gray-ultralight;
 
-    p {
-      margin-bottom: 0;
-    }
-  }
+$loading-gradient: linear-gradient(270deg, $glight, $glight, $gdark, $glight, $glight);
+
+.loading-anim {
+  animation: loadingAnimation 2s ease infinite;
+  background: $loading-gradient;
+  background-size: 1000% 1000%;
+}
+
+/* Placeholder element definitions */
+.entry-image-placeholder {
+  background-color: $gray-ultralight;
+  height: 20em;
+  margin: 0 0 1.25em;
+  width: 100%;
+}
+
+.title-placeholder {
+  background-color: $gray-megalight;
+  height: 2.75em;
+  margin: 0 0 .5em;
+  width: 100%;
+}
+
+.date-placeholder {
+  background-color: $gray-megalight;
+  height: 1em;
+  margin: 0 0 2em;
+  width: 35%;
+}
+
+.excerpt-placeholder {
+  background-color: $gray-megalight;
+  height: 1.75em;
+  margin: 0;
+  width: 80%;
 }
 
 :global .dark-mode .entry-stub {

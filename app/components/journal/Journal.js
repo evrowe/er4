@@ -6,7 +6,8 @@ import * as journalActions from '../../actions/journal';
 // Setup for store
 function mapStateToProps(state) {
   return {
-    entries: state.entries
+    entries: state.entries,
+    entriesAreLoading: state.entriesAreLoading
   };
 }
 
@@ -21,18 +22,20 @@ class Journal extends Component {
 
   static propTypes = {
     entries: PropTypes.array,
-    getEntries: PropTypes.func
+    getEntries: PropTypes.func,
+    entriesAreLoading: PropTypes.bool
   }
 
   static defaultProps = {
-    entries: []
+    entries: [],
+    entriesAreLoading: false
   }
 
 
   // Hooks
   // ---------------------------------------------------------------------------
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getEntries();
   }
 

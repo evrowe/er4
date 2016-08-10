@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import JournalEntryStub from '../journal-entry-stub/JournalEntryStub';
+import StubLoading from '../journal-entry-stub/StubLoading';
 
 class JournalList extends Component {
 
@@ -8,11 +9,13 @@ class JournalList extends Component {
   // ---------------------------------------------------------------------------
 
   static propTypes = {
-    entries: PropTypes.array
+    entries: PropTypes.array,
+    entriesAreLoading: PropTypes.bool
   }
 
   static defaultProps = {
-    entries: []
+    entries: [],
+    entriesAreLoading: true
   }
 
   // Render
@@ -25,7 +28,8 @@ class JournalList extends Component {
           <div className='column column-67 column-offset-16'>
             <h2>Entries</h2>
             <div className='journal-list'>
-              {this.props.entries.length ?
+              {this.props.entriesAreLoading ? <StubLoading/> : ''}
+              {!this.props.entriesAreLoading && this.props.entries.length ?
                 this.props.entries.map((entry, index) => <JournalEntryStub {...this.props} key={index} i={index} entry={entry} />) :
                 <p>No Entries Found.</p>
               }

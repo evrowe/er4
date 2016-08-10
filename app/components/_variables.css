@@ -4,6 +4,9 @@ $gray-dark:              #3a3f44;
 $gray:                   #52575c;
 $gray-light:             #7a8288;
 $gray-lighter:           #999;
+$gray-superlight:        #cacaca;
+$gray-megalight:         #dedede;
+$gray-ultralight:        #efefef;
 
 $brand-primary:         #faa73f;
 $brand-secondary:       #fecd67;
