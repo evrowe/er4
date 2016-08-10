@@ -6,17 +6,23 @@
 .navbar {
   padding: 1em;
   width: 100%;
+}
 
-  .navbar-nav {
-    float: right;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
+.navbar-nav {
+  float: right;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 
+.nav-item {
+  display: inline-block;
+  margin: 0;
+  padding: .5em 2em;
+}
+
+@media (max-width: 40.0rem) {
   .nav-item {
-    display: inline-block;
-    margin: 0;
-    padding: .5em 2em;
+    padding: .5em 1em;
   }
 }
