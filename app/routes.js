@@ -9,6 +9,7 @@ import Journal from './components/journal/Journal';
 import JournalEntry from './components/journal/journal-entry/JournalEntry';
 import JournalList from './components/journal/journal-list/JournalList';
 import Landing from './components/landing/Landing';
+import LogIn from './components/login/Login';
 import NotFound from './components/not-found/NotFound';
 
 // Utilitees
@@ -26,6 +27,7 @@ export default function(store) {
         <IndexRoute component={JournalList} />
         <Route path='/journal/entry/:entryId' component={JournalEntry}/>
       </Route>
+      <Route path='/login' component={LogIn}/>
       <Route path='*' component={NotFound}/>
     </Route>
   );
