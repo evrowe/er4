@@ -13,6 +13,7 @@ module.exports = function(app) {
   // Authentication
   app.get('/service/auth/authComplete', auth.authComplete);
   app.get('/service/auth/check', auth.doAuthCheck);
+  app.get('/service/auth/login', auth.doLogin);
   app.get('/service/auth/logout', auth.doLogOut);
 
   // Serve up the index html from the dist folder and let the React app

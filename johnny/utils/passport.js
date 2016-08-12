@@ -23,7 +23,7 @@ module.exports = function(app) {
   passport.use(new GitHubStrategy({
       clientID: app.get('GITHUB_CLIENT_ID'),
       clientSecret: app.get('GITHUB_CLIENT_SECRET'),
-      callbackURL: 'https://evan-rowe.com/service/auth'
+      callbackURL: 'https://evan-rowe.com/service/auth/authComplete'
     },
     function(accessToken, refreshToken, profile, done) {
       // Async verification, because reasons

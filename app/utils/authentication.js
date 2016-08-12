@@ -3,8 +3,14 @@ import $ from 'jquery';
 // Create no-op class
 var Authentication = function() {};
 
-Authentication.prototype.doLogin = function() {
+Authentication.prototype.check = function() {
   return $.get('/service/auth/check').then(res => {
+    return res.authenticated;
+  });
+};
+
+Authentication.prototype.doLogin = function() {
+  return $.get('/service/auth/login').then(res => {
     this.authenticated = res.authenticated;
     this.token = res.token;
     return res;

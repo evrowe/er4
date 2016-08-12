@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-// Route Components
+// Public Route Components
+import AhAhAh from './components/auth/AhAhAh';
 import App from './components/App';
 import About from './components/about/About';
 import Contact from './components/contact/Contact';
@@ -12,8 +13,31 @@ import Landing from './components/landing/Landing';
 import LogIn from './components/login/Login';
 import NotFound from './components/not-found/NotFound';
 
+// Dashboard Route Components
+import Dashboard from './components/dashboard/Dashboard';
+import DashboardIndex from './components/dashboard/DashboardIndex';
+
 // Utilitees
 import './utils/google-analytics';
+import Authentication from './utils/authentication';
+
+function checkAuth(nextState, replace, cb) {
+  // Determine whether we're logged in
+  Authentication.check().then(
+    // Success
+    authenticated => {
+      if (!authenticated) {
+        replace('/you-didnt-say-the-magic-word');
+      }
+      cb();
+    },
+    // Fail
+    () => {
+      replace('/you-didnt-say-the-magic-word');
+      cb();
+    }
+  );
+}
 
 export default function(store) {
   // Return Route Component Definition
@@ -28,6 +52,12 @@ export default function(store) {
         <Route path='/journal/entry/:entryId' component={JournalEntry}/>
       </Route>
       <Route path='/login' component={LogIn}/>
+      <Route path='/you-didnt-say-the-magic-word' component={AhAhAh}/>
+
+      <Route path='/dashboard' component={Dashboard} onEnter={checkAuth}>
+        <IndexRoute component={DashboardIndex} />
+      </Route>
+
       <Route path='*' component={NotFound}/>
     </Route>
   );
