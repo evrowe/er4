@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dashboard = require('webpack-dashboard');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const cssnext = require('postcss-cssnext');
 const csswring = require('csswring');
 const precss = require('precss');
@@ -10,6 +12,8 @@ const NpmInstallPlugin = require('npm-install-webpack-plugin');
 // Setup dev vs prod environments.
 var cssLoader, devtool, entry;
 const env = process.env.NODE_ENV || 'development';
+
+var dashboard = new Dashboard();
 
 // dev
 if (env === 'development') {
@@ -63,6 +67,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new DashboardPlugin(dashboard.setData),
     // convert inline style rules into a proper stylesheet
     new ExtractTextPlugin('styles.css'),
     // useful? maybe. who cares.

@@ -14,7 +14,9 @@ new WebpackDevServer(webpack(config), {
     '*': 'http://localhost:3000'
   },
 
-  publicPath: config.output.publicPath
+  publicPath: config.output.publicPath,
+
+  quiet: true // for webpack dashboard to do its thaaaaaang
 
 }).listen(4200, '127.0.0.1', function(err, result){
   if (err) {
