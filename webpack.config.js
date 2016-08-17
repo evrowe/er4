@@ -13,7 +13,22 @@ const NpmInstallPlugin = require('npm-install-webpack-plugin');
 var cssLoader, devtool, entry;
 const env = process.env.NODE_ENV || 'development';
 
-var dashboard = new Dashboard();
+var plugins = [
+  new webpack.EnvironmentPlugin([
+    'NODE_ENV',
+    'HOSTNAME'
+  ]),
+  // middlewarez
+  new webpack.optimize.OccurenceOrderPlugin(),
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NoErrorsPlugin(),
+  // convert inline style rules into a proper stylesheet
+  new ExtractTextPlugin('styles.css'),
+  // useful? maybe. who cares.
+  new NpmInstallPlugin({
+    save: true
+  })
+];
 
 // dev
 if (env === 'development') {
@@ -29,6 +44,10 @@ if (env === 'development') {
     'webpack/hot/only-dev-server', // webpack-dev-server
     './app/main' // app entry point
   ];
+
+  // Add the dashboard plugin for dev server
+  var dashboard = new Dashboard();
+  plugins.push(new DashboardPlugin(dashboard.setData));
 
 // prod
 } else {
@@ -58,23 +77,7 @@ module.exports = {
   },
 
   // so many webpack plugins
-  plugins: [
-    new webpack.EnvironmentPlugin([
-      'NODE_ENV',
-      'HOSTNAME'
-    ]),
-    // middlewarez
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new DashboardPlugin(dashboard.setData),
-    // convert inline style rules into a proper stylesheet
-    new ExtractTextPlugin('styles.css'),
-    // useful? maybe. who cares.
-    new NpmInstallPlugin({
-      save: true
-    })
-  ],
+  plugins: plugins,
 
   // postcss config. nested style rules, autoprefixing, minify w/ source maps
   postcss: function() {
