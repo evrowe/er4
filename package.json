@@ -51,6 +51,7 @@
     "compression": "^1.6.2",
     "cors": "^2.7.1",
     "css-loader": "^0.23.1",
+    "dotenv": "^2.0.0",
     "ember": "^1.0.0-pre.2",
     "ember-load-initializers": "^0.5.1",
     "express": "^4.13.4",
