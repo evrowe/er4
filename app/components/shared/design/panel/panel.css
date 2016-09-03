@@ -1,0 +1,15 @@
+@import '../../../variables';
+
+:global .panel {
+  background: $white;
+  box-shadow: 0px 0px 3px #d0d0d0;
+  padding: .5em .75em;
+  width: 100%;
+}
+
+:global .panel-title {
+  border-bottom: 1px solid $gray-superlight;
+  color: $gray-base;
+  font-size: 1.25em;
+  font-weight: 500;
+}
