@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
-import Button from '../shared/design/button/Button';
 import Panel from '../shared/design/panel/Panel';
 import PanelTitle from '../shared/design/panel/PanelTitle';
+import RadButton from '../shared/design/rad-button/RadButton';
 
 class DashIndex extends Component {
 
@@ -29,7 +29,7 @@ class DashIndex extends Component {
               <PanelTitle>Manage Entries</PanelTitle>
               {entryList.length ? <p>Entries go here.</p> : <p>No entries to display.</p>}
               <div className='actions'>
-                <Button goto={'/dashboard/posts/new'}>+ Create New</Button>
+                <RadButton goto={'/dashboard/posts/new'}>+ Create New</RadButton>
               </div>
             </Panel>
           </div>

@@ -4,6 +4,7 @@ var path = require('path');
 var express = require('express');
 var compression = require('compression');
 var morgan = require('morgan');
+var passport = require('passport');
 var session = require('express-session');
 
 // Environment Setup
@@ -14,7 +15,6 @@ require('dotenv').config();
 
 // Application Modules
 var mountAppRoutes = require('./johnny/routes');
-var passport = require('./johnny/utils/passport');
 
 // Application Variables
 var cacheTime = 7 * 24 * 60 * 60 * 1000;
@@ -66,13 +66,12 @@ if (env === 'production') {
 app.use(morgan('dev')); // Console request logging
 app.use(compression()); // Compression
 app.use(session(sessionConfig)); // Session configuration
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'dist'), { maxAge: cacheTime })); // Serve static assets from /dist
 
 // Set up modules
 // -----------------------------------------------------------------------------
-
-// Set up passport authentication module
-passport(app);
 
 // Mount server routes
 mountAppRoutes(app);

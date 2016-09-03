@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import './button.css';
+import './rad-button.css';
 
-Button.propTypes = {
+RadButton.propTypes = {
   children: PropTypes.node,
   goto: PropTypes.string
 };
 
-export default function Button(props) {
+export default function RadButton(props) {
   if (props.goto) {
     return(<Link to={props.goto} className='button'>{props.children}</Link>);
   } else {

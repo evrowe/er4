@@ -26,6 +26,7 @@ function checkAuth(nextState, replace, cb) {
   Authentication.check().then(
     // Success
     authenticated => {
+      console.log('authenticated state', authenticated);
       if (!authenticated) {
         replace('/you-didnt-say-the-magic-word');
       }
@@ -33,6 +34,7 @@ function checkAuth(nextState, replace, cb) {
     },
     // Fail
     () => {
+      console.log('auth failure');
       replace('/you-didnt-say-the-magic-word');
       cb();
     }
