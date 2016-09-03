@@ -1,28 +1,13 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as dashboardActions from '../../actions/dashboard.js';
+import React, { PropTypes } from 'react';
 
-function mapStateToProps() {
-  return {};
-}
+const Dashboard = ({ children }) => (
+  <div className='dashboard-top'>
+    {children}
+  </div>
+);
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(dashboardActions, dispatch);
-}
+Dashboard.propTypes = {
+  children: PropTypes.node
+};
 
-class Dashboard extends Component {
-
-  // Render
-  //----------------------------------------------------------------------------
-
-  render() {
-    return(
-      <div className='dashboard-top'>
-        {React.cloneElement(this.props.children, this.props)}
-      </div>
-    );
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default Dashboard;

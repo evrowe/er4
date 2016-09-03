@@ -16,6 +16,7 @@ import NotFound from './components/not-found/NotFound';
 // Dashboard Route Components
 import Dashboard from './components/dashboard/Dashboard';
 import DashboardIndex from './components/dashboard/DashboardIndex';
+import NewEntry from './components/dashboard/entries/NewEntry';
 
 // Utilitees
 import './utils/google-analytics';
@@ -26,7 +27,6 @@ function checkAuth(nextState, replace, cb) {
   Authentication.check().then(
     // Success
     authenticated => {
-      console.log('authenticated state', authenticated);
       if (!authenticated) {
         replace('/you-didnt-say-the-magic-word');
       }
@@ -58,6 +58,7 @@ export default function(store) {
 
       <Route path='/dashboard' component={Dashboard} onEnter={checkAuth}>
         <IndexRoute component={DashboardIndex} />
+        <Route path='/dashboard/new-entry' component={NewEntry} />
       </Route>
 
       <Route path='*' component={NotFound}/>

@@ -20,7 +20,6 @@ util.inherits(DevServerStrategy, Strategy);
 // hosts on every environment that needs to run this, especially if somebody is
 // cloning this for tinkering purposes.
 DevServerStrategy.prototype.authenticate = function(req, res) {
-  console.log('Authenticated using DevServerStrategy');
   req.session.authenticated = true;
   req.session.token = Math.random().toString(36).substring(7);
   // Send this dev along their way.
@@ -44,8 +43,6 @@ var gitHubStrategy = new GitHubStrategy({
     callbackURL: 'https://evan-rowe.com/service/auth/authComplete'
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log('Authenticated using gitHubStrategy');
-
     // Async verification, because reasons
     process.nextTick(function () {
 
@@ -78,10 +75,8 @@ passport.deserializeUser(function(obj, done) {
 
 // Mount the correct passport auth strategy for the given environment
 if (process.env.NODE_ENV === 'production') {
-  console.log('using gitHubStrategy');
   passport.use(gitHubStrategy);
 } else {
-  console.log('using devServerStrategy');
   passport.use(devServerStrategy);
 }
 
