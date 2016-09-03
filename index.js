@@ -8,7 +8,9 @@ var session = require('express-session');
 
 // Environment Setup
 // -----------------------------------------------------------------------------
-require('./env.js');
+
+// Load environment variables into process.env from .env file
+require('dotenv').config();
 
 // Application Modules
 var mountAppRoutes = require('./johnny/routes');
