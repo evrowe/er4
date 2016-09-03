@@ -13,7 +13,7 @@ module.exports.getEntries = function(req, res, next) {
   .then(function(entries) {
     res.status(200).send(entries);
   })
-  .catch(function(err) {
+  .catch(function(error) {
     console.log('Error fetching entries');
     res.status(500).send();
   });
@@ -24,7 +24,7 @@ module.exports.getEntry = function(req, res, next) {
   .then(function(entry) {
     res.status(200).send(entry);
   })
-  .catch(function(err) {
+  .catch(function(error) {
     console.log('Error fetching single entry');
     res.status(500).send();
   });

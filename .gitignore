@@ -22,3 +22,5 @@ npm-debug.log
 /connect.lock
 /coverage/*
 .tags*
+env.js
+.env

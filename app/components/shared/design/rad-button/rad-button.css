@@ -1,0 +1,17 @@
+@import '../../../variables';
+
+:global button,
+:global .button {
+  background-color: $brand-primary;
+  border-color: $brand-primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+:global .button.button-outline {
+  border-color: $brand-primary;
+  color: $brand-primary;
+}

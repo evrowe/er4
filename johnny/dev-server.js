@@ -10,11 +10,19 @@ new WebpackDevServer(webpack(config), {
 
   historyApiFallback: false,
 
+  log: () => {},
+
   proxy: {
     '*': 'http://localhost:3000'
   },
 
-  publicPath: config.output.publicPath
+  publicPath: config.output.publicPath,
+
+  quiet: true, // for webpack dashboard to do its thaaaaaang,
+
+  stats: {
+    colors: true
+  }
 
 }).listen(4200, '127.0.0.1', function(err, result){
   if (err) {

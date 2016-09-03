@@ -112,6 +112,10 @@ code {
   }
 }
 
+:global .text-center {
+  text-align: center;
+}
+
 /*****************************/
 /* Branding Classes
 /*****************************/

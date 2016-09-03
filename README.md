@@ -40,6 +40,13 @@ to auto restart when files change. Very useful.
 they update.
 * Visit the app at [http://localhost:4200](http://localhost:4200).
 
+### Environment Variables
+
+The server requires a local `.env` file at the root with the following variables set:
+- `COOKIE_SECRET`
+- `GITHUB_CLIENT_ID`
+- `GITHUB_CLIENT_SECRET`
+
 ## Production
 
 Run the app in production mode for better Express performance when you want to
