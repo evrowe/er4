@@ -1,4 +1,5 @@
 :global .actions {
+  button,
   .button {
     margin-right: .5em;
   }

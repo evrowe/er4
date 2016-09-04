@@ -7,8 +7,8 @@ exports.up = function(knex, Promise) {
       table.string('excerpt');
       table.string('content');
       table.string('headerImage');
-      table.dateTime('created');
-      table.dateTime('updated');
+      table.string('created'); // will use momentjs to enforce proper formatting
+      table.string('updated'); // will use momentjs to enforce proper formatting
       table.string('tags');
       table.string('category');
     })

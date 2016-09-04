@@ -17,6 +17,10 @@ class DashIndex extends Component {
   // PropTypes and Defaults
   //----------------------------------------------------------------------------
 
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  }
+
   state = {
     entries: [],
     isLoading: false
@@ -28,6 +32,12 @@ class DashIndex extends Component {
   getEntryList() {
     $.ajax(`/service/dashboard/entries?token=${Authentication.get('token')}`).then(response => {
       this.setState({ entries: response.entries });
+    });
+  }
+
+  logMeOut() {
+    Authentication.doLogout().then(() => {
+      this.context.router.push('/');
     });
   }
 
@@ -64,7 +74,7 @@ class DashIndex extends Component {
                 </table> : <p>No entries to display.</p>}
               <div className='actions'>
                 <RadButton goto={'/dashboard/new-entry'}>+ Create New</RadButton>
-                <a className='button button-outline' href='/service/auth/logout'>Log Out</a>
+                <RadButton className='button button-outline' onClick={this.logMeOut.bind(this)}>Log Out</RadButton>
               </div>
             </Panel>
           </div>
