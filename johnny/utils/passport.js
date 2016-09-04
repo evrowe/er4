@@ -44,7 +44,7 @@ var gitHubStrategy = new GitHubStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     // Async verification, because reasons
-    process.nextTick(function () {
+    process.nextTick(function() {
 
       // Me only, kids. All y'all haters can stay out.
       if (profile.username === 'evrowe') {
@@ -83,11 +83,8 @@ if (process.env.NODE_ENV === 'production') {
 module.exports.passport = passport;
 
 module.exports.handlePassportSuccess = function(req, res) {
-  // Set up a session token
-  var token = Math.random().toString(36).substring(4);
-
   req.session.authenticated = true;
-  req.session.token = token;
+  req.session.token = Math.random().toString(36).substring(7);
 
   // Redirect to the system dashboard
   res.redirect('/dashboard');

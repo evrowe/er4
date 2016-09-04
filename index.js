@@ -65,7 +65,7 @@ if (env === 'production') {
 
 app.use(morgan('dev')); // Console request logging
 app.use(compression()); // Compression
-app.use(session(sessionConfig)); // Session configuration
+app.use(session(sessionConfig)); // express-session configuration
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'dist'), { maxAge: cacheTime })); // Serve static assets from /dist

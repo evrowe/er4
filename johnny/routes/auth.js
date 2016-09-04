@@ -1,5 +1,3 @@
-const env = process.env.NODE_ENV;
-
 // Handler successful github login
 module.exports.doAuthCheck = function(req, res, next) {
   var authenticated = req.session.authenticated;
