@@ -1,11 +1,11 @@
 // Node modules
-var http = require('http');
-var path = require('path');
-var express = require('express');
-var compression = require('compression');
-var morgan = require('morgan');
-var passport = require('passport');
-var session = require('express-session');
+const http = require('http');
+const path = require('path');
+const express = require('express');
+const compression = require('compression');
+const morgan = require('morgan');
+const passport = require('passport');
+const session = require('express-session');
 
 // Environment Setup
 // -----------------------------------------------------------------------------
@@ -14,21 +14,22 @@ var session = require('express-session');
 require('dotenv').config();
 
 // Application Modules
-var mountAppRoutes = require('./johnny/routes');
+const db = require('./db');
+const mountAppRoutes = require('./johnny/routes');
 
 // Application Variables
-var cacheTime = 7 * 24 * 60 * 60 * 1000;
-var host      = process.env.HOST || '127.0.0.1';
-var port      = process.env.PORT || 3000;
-var env       = process.env.NODE_ENV;
-var secret    = process.env.COOKIE_SECRET;
-var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+const cacheTime = 7 * 24 * 60 * 60 * 1000;
+const host      = process.env.HOST || '127.0.0.1';
+const port      = process.env.PORT || 3000;
+const env       = process.env.NODE_ENV;
+const secret    = process.env.COOKIE_SECRET;
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
 // Setup Express App
 //------------------------------------------------------------------------------
 
-var app = express();
+const app = express();
 app.set('host', host);
 app.set('port', port);
 app.set('env', env);
@@ -38,7 +39,7 @@ app.set('GITHUB_CLIENT_SECRET', GITHUB_CLIENT_SECRET);
 // Session Configuration
 //------------------------------------------------------------------------------
 
-var sessionConfig = {
+const sessionConfig = {
   cookie: {
     httpOnly: true, // this is a security thingus
     maxAge: 2 * 60 * 60 * 1000
@@ -70,6 +71,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'dist'), { maxAge: cacheTime })); // Serve static assets from /dist
 
+// Add database methods to the server object
+app.db = db;
+
 // Set up modules
 // -----------------------------------------------------------------------------
 
@@ -79,7 +83,9 @@ mountAppRoutes(app);
 // Start the flippin server
 // -----------------------------------------------------------------------------
 
-http.createServer(app).listen(app.get('port'), app.get('host'), function(){
+const server = http.createServer(app);
+
+server.listen(app.get('port'), app.get('host'), function(){
   console.log(`Listening on port ${app.get('port')}`);
   if (app.get('env') === 'development') {
     console.log('"If everybody could just love each other the world would be a better place"\n -Johnny, "The Room"');
