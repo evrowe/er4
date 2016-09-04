@@ -84,6 +84,7 @@ but secure cookies won't work correctly when proxying to a node back-end without
 - [x] Create secure dashboard (github login)
 - [x] Create blog post listing on dashboard
 - [ ] Create blog post authoring/editing page
+- [ ] Set up runtime markdown parsing for display in UI
 - [ ] Set up S3 bucket uploads for images
 
 **Back End**
