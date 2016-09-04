@@ -61,14 +61,28 @@ deploy to a real server. Only I should ever need this but meh.
   * [React Dev Tools](https://github.com/facebook/react-devtools)
   * [Redux Dev Tools](https://github.com/gaearon/redux-devtools)
 
+## Useful Information
+
+### Nginx Config
+There are some great guides for configuring nginx to run the server in prod. They
+don't mention the fact that there's a fairly important header config you need to
+set to ensure that secure cookies work properly:
+
+```
+proxy_set_header X-Forwarded-Proto https;
+```
+
+I don't yet know enough about nginx to know why specifically this makes a difference,
+but secure cookies won't work correctly when proxying to a node back-end without it.
+
 ## Totally Rad To-Dos
 
 **UI**
 - [x] Set up React app
 - [x] Update site design
 - [x] Implement data layer with Redux
-- [ ] Create secure dashboard (github login)
-- [ ] Create blog post listing on dashboard
+- [x] Create secure dashboard (github login)
+- [x] Create blog post listing on dashboard
 - [ ] Create blog post authoring/editing page
 - [ ] Set up S3 bucket uploads for images
 
