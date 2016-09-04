@@ -10,6 +10,6 @@
 :global .panel-title {
   border-bottom: 1px solid $gray-superlight;
   color: $gray-base;
-  font-size: 1.25em;
+  font-size: 1.5em;
   font-weight: 500;
 }

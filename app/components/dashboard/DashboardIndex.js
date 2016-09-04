@@ -35,7 +35,7 @@ class DashIndex extends Component {
     });
   }
 
-  logMeOut() {
+  logMeOut = () => {
     Authentication.doLogout().then(() => {
       this.context.router.push('/');
     });
@@ -74,7 +74,7 @@ class DashIndex extends Component {
                 </table> : <p>No entries to display.</p>}
               <div className='actions'>
                 <RadButton goto={'/dashboard/new-entry'}>+ Create New</RadButton>
-                <RadButton className='button button-outline' onClick={this.logMeOut.bind(this)}>Log Out</RadButton>
+                <RadButton className='button button-outline' onClick={this.logMeOut}>Log Out</RadButton>
               </div>
             </Panel>
           </div>
