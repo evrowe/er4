@@ -16,7 +16,7 @@ import NotFound from './components/not-found/NotFound';
 // Dashboard Route Components
 import Dashboard from './components/dashboard/Dashboard';
 import DashboardIndex from './components/dashboard/DashboardIndex';
-import NewEntry from './components/dashboard/entries/NewEntry';
+import CreateEditEntry from './components/dashboard/entries/CreateEditEntry';
 
 // Utilitees
 import './utils/google-analytics';
@@ -58,7 +58,8 @@ export default function(store) {
 
       <Route path='/dashboard' component={Dashboard} onEnter={checkAuth}>
         <IndexRoute component={DashboardIndex} />
-        <Route path='/dashboard/new-entry' component={NewEntry} />
+        <Route path='/dashboard/new-entry' isNew component={CreateEditEntry} />
+        <Route path='/dashboard/edit-entry/:entryId' component={CreateEditEntry} />
       </Route>
 
       <Route path='*' component={NotFound}/>

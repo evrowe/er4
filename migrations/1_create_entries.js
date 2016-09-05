@@ -1,9 +1,9 @@
 exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('journal', table => {
-      table.increments('uid').primary();
+      table.increments('id').primary();
       table.string('title');
-      table.string('id');
+      table.string('slug').unique();
       table.string('excerpt');
       table.string('content');
       table.string('headerImage');

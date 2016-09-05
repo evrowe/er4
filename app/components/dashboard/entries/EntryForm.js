@@ -59,9 +59,9 @@ class EntryForm extends Component {
         <div className='form-row'>
           <p><strong>Entry Slug</strong></p>
           <input
-            value={this.props.entry.id}
+            value={this.props.entry.slug}
             type='text'
-            name='id'
+            name='slug'
             onChange={this.props.didManuallyChangeSlug} />
         </div>
         <div className='form-row'>

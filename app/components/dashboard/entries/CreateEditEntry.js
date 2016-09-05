@@ -1,21 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import moment from 'moment';
+import $ from 'jquery';
 
+// Components
 import EntryForm from './EntryForm';
 import Panel from '../../shared/design/panel/Panel';
 import PanelTitle from '../../shared/design/panel/PanelTitle';
 // import RadButton from '../../shared/design/rad-button/RadButton';
 
+// Utils
+import Authentication from '../../../utils/authentication';
+
 import './entry-form.css';
 
 class NewEntry extends Component {
 
+  static propTypes = {
+    route: PropTypes.object,
+    params: PropTypes.object
+  }
+
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  }
+
   state = {
     entry: {
+      category: '',
       content: '',
+      created: '',
       excerpt: '',
-      id: '',
-      title: ''
+      headerImage: '',
+      slug: '',
+      tags: '',
+      title: '',
+      updated: ''
     },
+    isLoading: false,
+    isNew: false,
+    loadError: false,
     slugManuallyChanged: false
   }
 
@@ -43,9 +66,63 @@ class NewEntry extends Component {
     this.updateSlug(e);
   }
 
+  fetchEntryForUpdate() {
+    // If the component has been invoked in the "edit entry" context, fetch the
+    // entry from the back end and set it up as the entry state for the form to
+    // perform edits on.
+    const { params : { entryId } } = this.props;
+    if (this.state.isNew) {
+      this.setState({ isLoading: true });
+      $.ajax(`/service/dashboard/entry/${entryId}?token=${Authentication.get('token')}`).then(
+        res => {
+          this.setState({ entry: res, isLoading: false });
+        },
+        // On error, update the component state to reflect that an error occurred
+        // so that we can hide/disable the entry form
+        err => {
+          this.setState({ isLoading: false, loadError: err });
+        }
+      );
+    }
+  }
+
   handleSubmit = (data) => {
-    this.setState({ entry: { data }});
-    // Do the nifty rad business of saving the data to the server
+    let currentDate = null,
+        endpointResolution = 'new',
+        entryId = '',
+        requestType = 'POST',
+        updatedDate = null;
+
+    if (this.state.isNew) {
+      currentDate = moment().format();
+    } else {
+      currentDate = data.created;
+      endpointResolution = 'update';
+      entryId = `/${data.slug}`;
+      requestType = 'PUT';
+      updatedDate = moment().format();
+    }
+
+    // Update the component state
+    this.setState({ entry: {
+        ...data,
+        created: currentDate,
+        updated: updatedDate
+      }}, () => {
+        // Once state update is complete, fire the request off
+        console.log('state.entry: ', this.state.entry);
+
+        // Do the nifty rad business of saving the data to the server,
+        // optionally append the entry id for update requests.
+        $.ajax(`/service/dashboard/entry/${endpointResolution}${entryId}?token=${Authentication.get('token')}`, {
+          contentType: 'application/json',
+          data: JSON.stringify(this.state.entry),
+          method: requestType
+        }).then(res => {
+          this.context.router.replace('/dashboard');
+        });
+      }
+    );
   }
   /**
    * Converts a string into a simple id slug containing only numbers, letters,
@@ -71,7 +148,15 @@ class NewEntry extends Component {
   updateSlug = (e) => {
     e.persist();
     let slug = this.saltTheSlug(e.target.value);
-    this.setState({ entry: { id: slug }});
+    this.setState({ entry: { slug }});
+  }
+
+  // Hooks
+  // ---------------------------------------------------------------------------
+
+  componentWillMount() {
+    this.setState({ isNew: this.props.route.isNew });
+    this.fetchEntryForUpdate();
   }
 
   // Render

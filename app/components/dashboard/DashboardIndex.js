@@ -12,6 +12,20 @@ import Authentication from '../../utils/authentication';
 
 import './dashboard.css';
 
+/**
+ * The dashboard index page. Currently hosts the list of journal entries as a
+ * jumping off point for creating new entries, editing existing entries and
+ * deleting old entries.
+ *
+ * **TODO:**
+ * - Add edit button to entries list
+ * - Add delete button to entries list
+ * - Figure out more things for this guy to do
+ *
+ * @class Component.DashIndex
+ * @constructor
+ * @extends React.Component
+ */
 class DashIndex extends Component {
 
   // PropTypes and Defaults
@@ -31,7 +45,7 @@ class DashIndex extends Component {
 
   getEntryList() {
     $.ajax(`/service/dashboard/entries?token=${Authentication.get('token')}`).then(response => {
-      this.setState({ entries: response.entries });
+      this.setState({ entries: response });
     });
   }
 

@@ -1,6 +1,7 @@
 // Node modules
 const http = require('http');
 const path = require('path');
+const bodyParser = require('body-parser');
 const express = require('express');
 const compression = require('compression');
 const morgan = require('morgan');
@@ -15,6 +16,17 @@ require('dotenv').config();
 
 // Application Modules
 const db = require('./db');
+
+// Load all of the models here to avoid circular dependencies that arise when
+// loading the models in multiple locations. Oof.
+// fs.readdirSync(path.join(__dirname, './models')).forEach(file => {
+//   require(`./models/${file}`);
+// });
+
+// Load entry model
+require('./johnny/models/entry');
+
+// Application Routes
 const mountAppRoutes = require('./johnny/routes');
 
 // Application Variables
@@ -67,6 +79,8 @@ if (env === 'production') {
 app.use(morgan('dev')); // Console request logging
 app.use(compression()); // Compression
 app.use(session(sessionConfig)); // express-session configuration
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'dist'), { maxAge: cacheTime })); // Serve static assets from /dist

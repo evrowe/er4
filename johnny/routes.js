@@ -1,12 +1,12 @@
-var path = require('path');
+const path = require('path');
 
 // Routes
-var auth = require('./routes/auth');
-var dashboard = require('./routes/dashboard');
-var entry = require('./routes/entry');
+const auth = require('./routes/auth');
+const dashboard = require('./routes/dashboard');
+const entry = require('./routes/entry');
 
 // Utils
-var passportAuth = require('./utils/passport');
+const passportAuth = require('./utils/passport');
 
 module.exports = function(app) {
 
@@ -37,7 +37,12 @@ module.exports = function(app) {
   // Private/Authenticated API Routes
   //----------------------------------------------------------------------------
 
+  // Journal
   app.get('/service/dashboard/entries', auth.validateAPIRequest, dashboard.listEntries);
+  app.get('/service/dashboard/entry/:entryId', auth.validateAPIRequest, dashboard.getEntry);
+  app.post('/service/dashboard/entry/new', auth.validateAPIRequest, dashboard.newEntry);
+  app.put('/service/dashboard/entry/update/:entryId', auth.validateAPIRequest, dashboard.updateEntry);
+  app.get('/service/dashboard/entry/delete/:entryId', auth.validateAPIRequest, dashboard.deleteEntry);
 
   // Serve up the index html from the dist folder and let the React app
   // handle all of the front-end routes

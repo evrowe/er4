@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0 (????-??-????)
+Added
+- [Node] Postgres database
+- [Node] CRUD API for journal entries
+- [UI] Create/edit entries view in dashboard
+
 ## 1.1.0 (09-03-2016)
 Added
 - [Node] Complete, hooked up authentication for dashboard

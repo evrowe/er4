@@ -17,11 +17,12 @@ You will need the following software properly installed on your computer:
 
 * [Git](http://git-scm.com/)
 * [Node.js](http://nodejs.org/) (with NPM)
+* [Docker](http://docker.com/) (Native recommended for easiest setup)
 
 ## Installation
 
 * `git clone git@github.com:evrowe/er4.git` this repository
-* change into the new directory
+* `cd ./er4` (change into the new directory)
 * `npm install`
 
 ## Running / Development
@@ -34,10 +35,12 @@ The node server will run at `localhost:3000`; the webpack hot reload server runs
 `localhost:4200`, and will automatically proxy API requests to the node server.
 
 To start up:
+* `npm run db:start` starts (and creates on first run) the postgres Docker container
+* `npm run db:create` creates the database in the postgres container
+* `npm run db:migrate` creates tables in the database
 * `npm run server:dev` starts the node server in development mode, using `nodemon`
-to auto restart when files change. Very useful.
-* `npm run server:webpack` starts the webpack server. Modules will hot reload when
-they update.
+to auto restart when files change. Ignores changes to React files and build files. Very useful.
+* `npm run server:webpack` starts the webpack server. Modules will hot reload when they update.
 * Visit the app at [http://localhost:4200](http://localhost:4200).
 
 ### Environment Variables
@@ -46,11 +49,15 @@ The server requires a local `.env` file at the root with the following variables
 - `COOKIE_SECRET`
 - `GITHUB_CLIENT_ID`
 - `GITHUB_CLIENT_SECRET`
+- `POSTGRES_DB` (refer to `./scripts/create-database.js`) for how to set this value per env
+- `POSTGRES_HOST` (generally should be `127.0.0.1` unless hosting postgres on a different server)
+- `POSTGRES_PORT` (use postgres default or whatever custom port you've set)
+- `POSTGRES_USER`
+- `POSTGRES_PASSWORD`
 
 ## Production
 
-Run the app in production mode for better Express performance when you want to
-deploy to a real server. Only I should ever need this but meh.
+Run the app in production mode for better Express performance when you want to deploy to a real server. Only I should ever need this but here it is, in case you need it.
 
 * `npm run build` builds a production-ready artifact of the UI application.
 * `npm run start` boots the server in production mode, serves the UI and back-end
@@ -64,9 +71,7 @@ deploy to a real server. Only I should ever need this but meh.
 ## Useful Information
 
 ### Nginx Config
-There are some great guides for configuring nginx to run the server in prod. They
-don't mention the fact that there's a fairly important header config you need to
-set to ensure that secure cookies work properly:
+There are some great guides for configuring nginx to run the server in prod. They don't mention the fact that there's a fairly important header config you need to set to ensure that secure cookies work properly:
 
 ```
 proxy_set_header X-Forwarded-Proto https;
@@ -83,19 +88,32 @@ but secure cookies won't work correctly when proxying to a node back-end without
 - [x] Implement data layer with Redux
 - [x] Create secure dashboard (github login)
 - [x] Create blog post listing on dashboard
-- [ ] Create blog post authoring/editing page
+- [ ] Create blog post authoring/editing page *[IN PROGRESS]*
+  - [x] Basic entry form
+  - [x] Auto URL slug generation
+  - [ ] Date fields
+  - [ ] Preview screen (for Markdown content)
+  - [ ] Success/fail/in-progress states for during/after transactions
+- [ ] Switch UI to reading public-facing journal from DB (after they have been migrated)
 - [ ] Set up runtime markdown parsing for display in UI
 - [ ] Set up S3 bucket uploads for images
 
 **Back End**
 - [x] Create barebones API for serving legacy blog post static JSON files
-- [ ] Get a postgres database running
-- [ ] Write interface to postgres with Knex.js
-- [ ] CRUD API for blog posts
+- [x] Get a postgres database running
+- [x] Write interface to postgres with Knex.js
+- [ ] CRUD API for blog posts *[IN PROGRESS]*
+  - [x] Create
+  - [x] Read
+  - [ ] Update *[IN PROGRESS]*
+  - [ ] Delete *[IN PROGRESS]*
 - [ ] Migrate legacy blog posts to back-end
+- [ ] Create DB backup functionality
 
 **Server**
 - [x] Set up/configure Droplet
 - [x] Serve node app via nginx
 - [x] HTTPS via letsencrypt
-- [ ] Dockerize server setup for ease of deployment (future times)
+- [ ] Install + configure Docker
+- [ ] Initialize Prod DB
+- [ ] Dockerize entire server setup for ease of deployment (future times)
