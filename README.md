@@ -94,6 +94,7 @@ but secure cookies won't work correctly when proxying to a node back-end without
   - [ ] Date fields
   - [ ] Preview screen (for Markdown content)
   - [ ] Success/fail/in-progress states for during/after transactions
+- [ ] Update to React Router v4
 - [ ] Switch UI to reading public-facing journal from DB (after they have been migrated)
 - [ ] Set up runtime markdown parsing for display in UI
 - [ ] Set up S3 bucket uploads for images
