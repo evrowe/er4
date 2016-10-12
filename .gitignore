@@ -24,3 +24,4 @@ npm-debug.log
 .tags*
 env.js
 .env
+postgres.env
