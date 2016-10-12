@@ -29,7 +29,7 @@
     "url": "https://github.com/evrowe/er4"
   },
   "engines": {
-    "node": "5.11.1"
+    "node": "6.7.0"
   },
   "author": "Evan Rowe",
   "license": "MIT",
@@ -74,6 +74,7 @@
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
+    "passport-strategy": "^1.0.0",
     "pg": "^6.1.0",
     "postcss-loader": "^0.9.1",
     "react": "^15.3.1",

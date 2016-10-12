@@ -2,8 +2,6 @@ version: '2'
 services:
   db:
     image: postgres
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
+    env_file: ./postgres.env
     ports:
       - "5432:5432"

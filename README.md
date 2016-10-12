@@ -52,6 +52,10 @@ The server requires a local `.env` file at the root with the following variables
 - `POSTGRES_DB` (refer to `./scripts/create-database.js`) for how to set this value per env
 - `POSTGRES_HOST` (generally should be `127.0.0.1` unless hosting postgres on a different server)
 - `POSTGRES_PORT` (use postgres default or whatever custom port you've set)
+
+Additionally, the server AND the docker postgres container require a `postgres.env` file for storing
+the postgres server login credentials
+
 - `POSTGRES_USER`
 - `POSTGRES_PASSWORD`
 

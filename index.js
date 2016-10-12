@@ -7,12 +7,14 @@ const compression = require('compression');
 const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
+const dotenv = require('dotenv');
 
 // Environment Setup
 // -----------------------------------------------------------------------------
 
 // Load environment variables into process.env from .env file
-require('dotenv').config();
+dotenv.config();
+dotenv.config({ path: './postgres.env' });
 
 // Application Modules
 const db = require('./db');
